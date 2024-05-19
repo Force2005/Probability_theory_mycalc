@@ -16,20 +16,21 @@ def welcome_message():
     print("Вот список тем, которые вы можете исследовать:")
     print("1. Факториал числа")
     print("2. Вероятность событий A и B")
-    print("3. Перестановки с повторениями")
-    print("4. Размещения")
-    print("5. Сочетания")
-    print("6. Бросок кубика и проверка совместности событий")
-    print("7. Классическая вероятность")
-    print("8. Вероятность произведения независимых событий")
-    print("9. Вероятность сложения событий")
-    print("10. Полная вероятность события")
-    print("11. Условная вероятность по формуле Байеса")
-    print("12. Подбрасывание монеты")
-    print("13. Формула Бернулли")
-    print("14. Числовые характеристики ДСВ")
-    print("15. Визуализация данных")
-    print("16. Расчет статистик и визуализация данных")
+    print("3. Вероятность событий A и B (Cумма)")
+    print("4. Перестановки с повторениями")
+    print("5. Размещения")
+    print("6. Сочетания")
+    print("7. Бросок кубика и проверка совместности событий")
+    print("8. Классическая вероятность")
+    print("9. Вероятность произведения независимых событий")
+    print("10. Вероятность сложения событий")
+    print("11. Полная вероятность события")
+    print("12. Условная вероятность по формуле Байеса")
+    print("13. Подбрасывание монеты")
+    print("14. Формула Бернулли")
+    print("15. Числовые характеристики ДСВ")
+    print("16. Визуализация данных")
+    print("17. Расчет статистик и визуализация данных")
     print("")
     print(Fore.RED + "========================================================================================")
     print("")
@@ -186,48 +187,51 @@ def choose_topic(choice, *args):
         return factoriall(*args)
     elif choice == 2:
         # Тема 2: Вероятность событий A и B
-        return probability_product(*args), probability_sum(*args)
+        return probability_product(*args)
     elif choice == 3:
+        # Тема 2: Вероятность событий A и B
+        return probability_sum(*args)
+    elif choice == 4:
         # Тема 3: Перестановки с повторениями
         return permutations_with_repetitions(*args)
-    elif choice == 4:
+    elif choice == 5:
         # Тема 4: Размещения
         return arrangements(*args)
-    elif choice == 5:
+    elif choice == 6:
         # Тема 5: Сочетания
         return combinations(*args)
-    elif choice == 6:
+    elif choice == 7:
         # Тема 6: Бросок кубика и проверка совместности событий
         return roll_dice(), check_compatibility(*args)
-    elif choice == 7:
+    elif choice == 8:
         # Тема 7: Классическая вероятность
         return classical_probability(*args)
-    elif choice == 8:
+    elif choice == 9:
         # Тема 8: Вероятность произведения независимых событий
         return independent_events_probability(*args)
-    elif choice == 9:
+    elif choice == 10:
         # Тема 9: Вероятность сложения событий
         return union_probability(*args)
-    elif choice == 10:
+    elif choice == 11:
         # Тема 10: Полная вероятность события
         return total_probability(*args)
-    elif choice == 11:
+    elif choice == 12:
         # Тема 11: Условная вероятность по формуле Байеса
         return bayes_formula(*args)
-    elif choice == 12:
+    elif choice == 13:
         # Тема 12: Подбрасывание монеты
         return flip_coin(*args)
-    elif choice == 13:
+    elif choice == 14:
         # Тема 13: Формула Бернулли
         return bernoulli_formula(*args)
-    elif choice == 14:
+    elif choice == 15:
         # Тема 14: Числовые характеристики ДСВ
         return calculate_statistics(*args)
-    elif choice == 15:
+    elif choice == 16:
         # Тема 15: Визуализация данных
         plot_data(*args)
         return "Графики построены."
-    elif choice == 16:
+    elif choice == 17:
         # Тема 16: Расчет статистик и визуализация данных
         statistics = calculate_statistics(*args)
         plot_data(*args)
@@ -245,67 +249,72 @@ def request_arguments(choice):
         P_A_and_B = float(input("Введите вероятность совместного события A и B (P_A_and_B): "))
         return [P_A, P_B, P_A_and_B]
     elif choice == 3:
+        P_A = float(input("Введите вероятность события A (P_A): "))
+        P_B = float(input("Введите вероятность события B (P_B): "))
+        P_A_and_B = float(input("Введите вероятность совместного события A и B (P_A_and_B): "))
+        return [P_A, P_B, P_A_and_B]
+    elif choice == 4:
         n = int(input("Введите общее количество элементов (n): "))
         repetitions = input("Введите количество повторений для каждого элемента, разделенные пробелом: ").split()
         repetitions = [int(r) for r in repetitions]
         return [n] + repetitions
-    elif choice == 4:
-        n = int(input("Введите общее количество элементов (n): "))
-        k = int(input("Введите количество элементов ,меньше предыдущего, в размещении (k): "))
-        return [n, k]
     elif choice == 5:
         n = int(input("Введите общее количество элементов (n): "))
         k = int(input("Введите количество элементов ,меньше предыдущего, в размещении (k): "))
         return [n, k]
     elif choice == 6:
+        n = int(input("Введите общее количество элементов (n): "))
+        k = int(input("Введите количество элементов ,меньше предыдущего, в размещении (k): "))
+        return [n, k]
+    elif choice == 7:
         event_a = input("Введите элементы события A, разделенные пробелом: ").split()
         event_a = [int(e) for e in event_a]
         event_b = input("Введите элементы события B, разделенные пробелом: ").split()
         event_b = [int(e) for e in event_b]
         return [event_a, event_b]
-    elif choice == 7:
+    elif choice == 8:
         total_outcomes = int(input("Введите общее количество возможных исходов: "))
         favorable_outcomes = int(input("Введите количество благоприятных исходов: "))
         return [total_outcomes, favorable_outcomes]
-    elif choice == 8:
+    elif choice == 9:
         P_A = float(input("Введите вероятность события A (P_A): "))
         P_B = float(input("Введите вероятность события B (P_B): "))
         return [P_A, P_B]
-    elif choice == 9:
+    elif choice == 10:
         P_A = float(input("Введите вероятность события A (P_A): "))
         P_B = float(input("Введите вероятность события B (P_B): "))
         P_A_and_B = float(input("Введите вероятность совместного события A и B (P_A_and_B): "))
         return [P_A, P_B, P_A_and_B]
-    elif choice == 10:
+    elif choice == 11:
         B_probs = input("Введите вероятности событий B_i, разделенные пробелом: ").split()
         B_probs = [float(p) for p in B_probs]
         A_given_B_probs = input("Введите условные вероятности события A при условии B_i, разделенные пробелом: ").split()
         A_given_B_probs = [float(p) for p in A_given_B_probs]
         return [B_probs, A_given_B_probs]
-    elif choice == 11:
+    elif choice == 12:
         P_B_given_A = float(input("Введите вероятность события B при условии A (P_B_given_A): "))
         P_A = float(input("Введите априорную вероятность события A (P_A): "))
         P_B = float(input("Введите полную вероятность события B (P_B): "))
         return [P_B_given_A, P_A, P_B]
-    elif choice == 12:
+    elif choice == 13:
         n = int(input("Введите количество подбрасываний монеты (n): "))
         return [n]
-    elif choice == 13:
+    elif choice == 14:
         n = int(input("Введите общее количество испытаний (n): "))
         k = int(input("Введите количество успехов (k): "))
         p = float(input("Введите вероятность успеха в одном испытании (p): "))
         return [n, k, p]
-    elif choice == 14:
+    elif choice == 15:
         values = input("Введите возможные значения ДСВ, разделенные пробелом: ").split()
         values = [int(v) for v in values]
         probabilities = input("Введите вероятности для каждого значения, разделенные пробелом: ").split()
         probabilities = [float(p) for p in probabilities]
         return [values, probabilities]
-    elif choice == 15:
+    elif choice == 16:
         data = input("Введите набор данных, разделенных пробелом: ").split()
         data = [int(d) for d in data]
         return [data]
-    elif choice == 16:
+    elif choice == 17:
         print("Введите набор числовых данных, которые будут использоваться для статистического анализа.")
         print("Данные должны быть целыми или дробными числами, разделенными пробелом.")
         data_input = input("Пример ввода: 1.5 2.3 3.7 4.1 5.9\nВведите данные: ")
@@ -324,13 +333,13 @@ def main():
     welcome_message()
     start = input("Введите 'start' для начала работы: ").lower()
     if start == 'start':
-        choice = int(input("Введите номер темы (1-16): "))
+        choice = int(input("Введите номер темы (1-17): "))
         if choice in range(1, 17):
             args = request_arguments(choice)
             result = choose_topic(choice, *args)
             print(f"Результат: {result}")
         else:
-            print("Неверный номер темы. Пожалуйста, выберите номер от 1 до 16.")
+            print("Неверный номер темы. Пожалуйста, выберите номер от 1 до 17.")
     else:
         print("Начало работы не подтверждено. Завершение программы.")
 
