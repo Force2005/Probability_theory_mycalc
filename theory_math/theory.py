@@ -334,7 +334,7 @@ def main():
     start = input("Введите 'start' для начала работы: ").lower()
     if start == 'start':
         choice = int(input("Введите номер темы (1-17): "))
-        if choice in range(1, 17):
+        if choice in range(1, 18):
             args = request_arguments(choice)
             result = choose_topic(choice, *args)
             print(f"Результат: {result}")
